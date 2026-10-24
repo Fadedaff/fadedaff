@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru" data-env="vitrina">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0c0c0d">
+<title>FADED — адреса для оплаты</title>
+<meta name="description" content="Адреса @fadedaff для оплаты. Пишу только с @fadedaff — адрес не с этой страницы не мой.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/geo-lat.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="env.css">
+</head>
+<body>
+<canvas class="dust" aria-hidden="true"></canvas>
+<div class="giant" aria-hidden="true">FADED</div>
+<header class="top">
+  <div class="brand"><b>FADED</b><a href="https://t.me/fadedaff">@fadedaff</a></div>
+  <p class="warn">Пишу только с @fadedaff. Адрес не с этой страницы — не мой.</p>
+</header>
+<h1 class="headline">Адреса<br>для оплаты</h1>
+
+<!-- Черновик: удалить этот абзац, когда заглушки заменены настоящими адресами -->
+<p class="draft">Черновик: адреса — заглушки, ничего на них не отправляй.</p>
+
+<main class="deck" aria-label="Адреса для оплаты">
+  <div class="tabs" role="tablist" aria-label="Сеть">
+    <button role="tab" type="button">USDT TRC20</button>
+    <button role="tab" type="button">USDT ERC20</button>
+    <button role="tab" type="button">BTC</button>
+    <button role="tab" type="button">ETH</button>
+    <button role="tab" type="button">TON</button>
+  </div>
+
+  <div class="stage">
+    <div class="marks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <button class="arrow prev" type="button" aria-label="Предыдущий адрес"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button>
+    <div class="track" tabindex="0">
+      <article class="card" data-addr="T0EXAMPLE0REPLACE0WITH0REAL0ADDR00" data-name="USDT в сети TRC20">
+        <div class="face">
+          <div class="c-top"><div><b class="coin">USDT</b><span class="net">в сети TRC20 (TRON)</span></div><span class="mark">FADED</span></div>
+          <div class="plate"><div class="qrimg"></div></div>
+          <code class="a">T0EXAMPLE0REPLACE0WITH0REAL0ADDR00</code>
+          <div class="c-foot"><span>01 / 05</span><span>@fadedaff</span></div>
+        </div>
+      </article>
+      <article class="card" data-addr="0x0EXAMPLE0REPLACE0WITH0REAL0ADDRESS00000" data-name="USDT в сети ERC20">
+        <div class="face">
+          <div class="c-top"><div><b class="coin">USDT</b><span class="net">в сети ERC20 (Ethereum)</span></div><span class="mark">FADED</span></div>
+          <div class="plate"><div class="qrimg"></div></div>
+          <code class="a">0x0EXAMPLE0REPLACE0WITH0REAL0ADDRESS00000</code>
+          <div class="c-foot"><span>02 / 05</span><span>@fadedaff</span></div>
+        </div>
+      </article>
+      <article class="card" data-addr="bc1q0example0replace0with0real0address00" data-name="BTC">
+        <div class="face">
+          <div class="c-top"><div><b class="coin">BTC</b><span class="net">в сети Bitcoin</span></div><span class="mark">FADED</span></div>
+          <div class="plate"><div class="qrimg"></div></div>
+          <code class="a">bc1q0example0replace0with0real0address00</code>
+          <div class="c-foot"><span>03 / 05</span><span>@fadedaff</span></div>
+        </div>
+      </article>
+      <article class="card" data-addr="0x0EXAMPLE0REPLACE0WITH0REAL0ADDRESS11111" data-name="ETH">
+        <div class="face">
+          <div class="c-top"><div><b class="coin">ETH</b><span class="net">в сети Ethereum</span></div><span class="mark">FADED</span></div>
+          <div class="plate"><div class="qrimg"></div></div>
+          <code class="a">0x0EXAMPLE0REPLACE0WITH0REAL0ADDRESS11111</code>
+          <div class="c-foot"><span>04 / 05</span><span>@fadedaff</span></div>
+        </div>
+      </article>
+      <article class="card" data-addr="UQ0EXAMPLE0REPLACE0WITH0REAL0ADDRESS000000000000" data-name="TON">
+        <div class="face">
+          <div class="c-top"><div><b class="coin">TON</b><span class="net">в сети TON</span></div><span class="mark">FADED</span></div>
+          <div class="plate"><div class="qrimg"></div></div>
+          <code class="a">UQ0EXAMPLE0REPLACE0WITH0REAL0ADDRESS000000000000</code>
+          <div class="c-foot"><span>05 / 05</span><span>@fadedaff</span></div>
+        </div>
+      </article>
+    </div>
+    <button class="arrow next" type="button" aria-label="Следующий адрес"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+  </div>
+
+  <button class="copy" type="button">Скопировать адрес</button>
+  <p class="hint">Листай карточки, чтобы выбрать сеть. Нажми на карточку — адрес скопируется.</p>
+</main>
+
+<ol class="rules">
+  <li>Проверь сеть: USDT в TRC20 и в ERC20 — разные адреса, перевод не в той сети потеряется.</li>
+  <li>Сверь первые и последние шесть знаков адреса в кошельке с карточкой.</li>
+  <li>Сомневаешься — напиши <a href="https://t.me/fadedaff">@fadedaff</a> и дождись ответа.</li>
+</ol>
+
+<footer class="foot">Обновлено 24.10.2026 · fadedaff.store</footer>
+
+<div class="toast" role="status" aria-live="polite"></div>
+
+<div class="envbar" role="radiogroup" aria-label="Вид страницы"><span>Вид</span><button data-env="vitrina">Витрина</button><button data-env="chertezh">Чертёж</button><button data-env="typo">Типографика</button><button data-env="dust">Пыль</button><button data-env="split">Сплит</button></div>
+
+<script src="qrcode.min.js"></script>
+<script src="app.js"></script>
+<script src="env.js"></script>
+</body>
+</html>
