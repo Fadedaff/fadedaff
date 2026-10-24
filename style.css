@@ -23,20 +23,38 @@
 html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
 body {
   margin: 0; min-height: 100vh; color: var(--text); font: 400 15px/1.5 var(--ui); overflow-x: hidden;
-  background: radial-gradient(120% 70% at 50% -10%, #232326 0%, #121214 45%, var(--bg) 75%) fixed, var(--bg);
+  background: #040404;
 }
+/* Фон: прожектор сверху на карту, пыль в луче, затемнение по краям */
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(34% 46% at 50% 34%, rgba(255, 255, 255, .11), transparent 70%),
+    conic-gradient(from 180deg at 50% -12%, transparent 164deg, rgba(255, 255, 255, .06) 172deg, rgba(255, 255, 255, .1) 180deg, rgba(255, 255, 255, .06) 188deg, transparent 196deg);
+  filter: blur(8px); }
+.dust { position: fixed; inset: 0; z-index: -1; width: 100vw; height: 100vh; pointer-events: none; }
+body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(80% 70% at 50% 45%, transparent 40%, rgba(0, 0, 0, .7)); }
 a { color: inherit; text-decoration-color: var(--dim); text-underline-offset: 3px; }
 a:hover { text-decoration-color: var(--text); }
 :focus-visible { outline: 1.5px solid var(--text); outline-offset: 4px; border-radius: 6px; }
 
 /* Шапка */
-.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; max-width: 1100px; margin: 0 auto; padding: 22px 20px 0; }
-.brand { display: flex; align-items: baseline; gap: 14px; }
-.brand b { font-weight: 600; font-size: 15px; letter-spacing: .5em; }
-.brand a { color: var(--mute); font-size: 14px; text-decoration: none; }
-.brand a:hover { color: var(--text); }
-.warn { margin: 0; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--mute); font-size: 13px; }
-.draft { max-width: 1100px; margin: 12px auto 0; padding: 0 20px; color: #c98f8f; font-size: 13px; }
+.top { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 1100px; margin: 0 auto; padding: 24px 20px 0; text-align: center; }
+.brand { font-weight: 600; font-size: 18px; letter-spacing: .7em; margin-right: -.7em; }
+/* Telegram — главная кнопка шапки: по нему со мной связываются */
+.tg { position: relative; display: inline-flex; align-items: center; gap: 12px; padding: 9px 22px 9px 9px; overflow: hidden; border-radius: 999px; text-decoration: none; color: var(--text);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .13), rgba(255, 255, 255, .04)); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22), 0 10px 30px -12px rgba(0, 0, 0, .9);
+  transition: box-shadow .2s, transform .15s; }
+.tg:hover { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .45), 0 10px 30px -12px rgba(0, 0, 0, .9); }
+.tg:active { transform: scale(.98); }
+.tg::after { content: ""; position: absolute; inset: 0; translate: -120% 0; pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .22) 50%, transparent 65%); animation: sheen 5s ease-in-out 1.2s infinite; }
+@keyframes sheen { 0%, 70% { translate: -120% 0; } 100% { translate: 120% 0; } }
+.tg-ic { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--text); color: var(--bg); }
+.tg-ic svg { width: 20px; height: 20px; fill: currentColor; translate: -1px 1px; }
+.tg-txt { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+.tg-txt b { font-weight: 600; font-size: 17px; letter-spacing: .01em; }
+.tg-txt small { color: var(--mute); font-size: 12px; }
+.warn { margin: 0; max-width: 360px; color: var(--mute); font-size: 13px; line-height: 1.45; }
 
 /* Колода */
 .deck { display: flex; flex-direction: column; align-items: center; margin-top: 18px; }
@@ -49,13 +67,16 @@ a:hover { text-decoration-color: var(--text); }
 .stage { position: relative; width: 100%; margin-top: 10px; }
 .track {
   display: flex; gap: 18px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none;
-  padding: 14px calc(50% - var(--cw) / 2) 22px; outline: none;
+  padding: 14px calc(50% - var(--cw) / 2) 84px; outline: none;
 }
 .track::-webkit-scrollbar { display: none; }
 
 .card { flex: none; width: var(--cw); scroll-snap-align: center; perspective: 900px; cursor: pointer;
   opacity: .32; scale: .9; transition: opacity .35s, scale .35s cubic-bezier(.2, .8, .2, 1); }
 .card.on { opacity: 1; scale: 1; }
+.card.on .face { -webkit-box-reflect: below 10px linear-gradient(transparent 83%, rgba(255, 255, 255, .26)); }
+.stage::after { content: ""; position: absolute; left: 50%; bottom: 40px; width: calc(var(--cw) * 1.8); height: 70px; translate: -50% 0; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, .07), transparent); }
 .face {
   position: relative; aspect-ratio: .63; padding: 20px 20px 16px; border-radius: 22px; overflow: hidden;
   display: flex; flex-direction: column;
@@ -106,7 +127,7 @@ a:hover { text-decoration-color: var(--text); }
 .toast.on { opacity: 1; translate: -50% 0; }
 
 @media (min-width: 900px) {
-  :root { --cw: min(34vh, 360px); }
+  :root { --cw: min(31vh, 340px); }
   .top { padding-top: 28px; }
   .deck { margin-top: 8px; }
   .arrow { display: grid; }
@@ -116,5 +137,6 @@ a:hover { text-decoration-color: var(--text); }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .tg::after { animation: none; }
   .card, .face, .tabs button { transition: none; }
 }
