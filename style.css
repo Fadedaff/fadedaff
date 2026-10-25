@@ -126,7 +126,7 @@ a:hover { text-decoration-color: var(--text); }
 .toast.on { opacity: 1; translate: -50% 0; }
 
 @media (min-width: 900px) {
-  :root { --cw: clamp(200px, calc((100vh - 400px) * .63), 340px); }
+  :root { --cw: clamp(200px, calc((100vh - 260px) * .63), 420px); }
   .top { flex-direction: row; justify-content: center; gap: 28px; padding-top: 20px; }
   .warn { max-width: 300px; text-align: left; }
   .hint { margin-top: 10px; }
